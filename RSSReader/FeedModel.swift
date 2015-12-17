@@ -13,21 +13,13 @@ class RSSFeed {
     let title: String
     let author: String
     let content: String
+    let published: String
     
-    init(title: String, author: String, content: String) {
+    init(title: String, author: String, content: String, published: String) {
         self.title = title
         self.author = author
         self.content = content
-    }
-    
-    var dict = [String: String]()
-    
-    func toDict() -> [String: String] {
-        dict["title"] = title
-        dict["author"] = author
-        dict["content"] = content
-        
-        return dict;
+        self.published = published
     }
 }
 
