@@ -34,8 +34,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhg-At-OBE">
-                                                    <rect key="frame" x="118" y="32" width="454" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhg-At-OBE">
+                                                    <rect key="frame" x="118" y="31" width="454" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -46,12 +46,12 @@
                                                         <constraint firstAttribute="width" constant="133" id="qQJ-kY-qbG"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.83529411764705885" green="0.81960784313725488" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ht6-Fs-acD">
                                                     <rect key="frame" x="19" y="10" width="80" height="80"/>
-                                                    <color key="backgroundColor" red="1" green="0.2320165084800494" blue="0.17652800917156164" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.83529411764705885" green="0.82745098039215681" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="I4I-pB-Ff9"/>
                                                         <constraint firstAttribute="height" constant="80" id="vlH-pI-cAn"/>
@@ -59,7 +59,7 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mhg-At-OBE" firstAttribute="top" secondItem="Lr5-pt-p1n" secondAttribute="bottom" constant="5" id="2Vr-Fd-nib"/>
+                                                <constraint firstItem="mhg-At-OBE" firstAttribute="top" secondItem="Lr5-pt-p1n" secondAttribute="bottom" constant="4" id="2Vr-Fd-nib"/>
                                                 <constraint firstItem="ang-bK-m3F" firstAttribute="top" secondItem="mhg-At-OBE" secondAttribute="bottom" constant="25.5" id="6uI-Xy-piX"/>
                                                 <constraint firstItem="mhg-At-OBE" firstAttribute="leading" secondItem="Lr5-pt-p1n" secondAttribute="leading" id="CR5-3R-Ihd"/>
                                                 <constraint firstItem="ang-bK-m3F" firstAttribute="bottom" secondItem="Ht6-Fs-acD" secondAttribute="bottom" id="Icv-5P-ItQ"/>

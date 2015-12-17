@@ -7,19 +7,31 @@
 //
 
 import Foundation
-import UIKit
+import ObjectMapper
 
-class RSSFeed {
-    let title: String
-    let author: String
-    let content: String
-    let published: String
+class RSSFeed : Mappable {
+    var title: String?
+    var url: String?
+    var author: String?
+    var content: String?
+    var published: NSDate?
     
-    init(title: String, author: String, content: String, published: String) {
-        self.title = title
-        self.author = author
-        self.content = content
-        self.published = published
+    var publishedText: String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        return dateFormatter.stringFromDate(self.published!)
+    }
+    
+    required init?(_ map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        title      <- map["title"]
+        url        <- map["url"]
+        author     <- map["author"]
+        content    <- map["summary"]
+        published  <- (map["publishDate"], DateTransform())
     }
 }
 
