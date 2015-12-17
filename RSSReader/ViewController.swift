@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource {
 
@@ -18,6 +20,17 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        Alamofire.request(.GET, "https://httpbin.org/get").validate().responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    print("JSON: \(json)")
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
