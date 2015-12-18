@@ -14,13 +14,7 @@ class RSSFeed : Mappable {
     var url: String?
     var author: String?
     var content: String?
-    var published: NSDate?
-    
-    var publishedText: String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd"
-        return dateFormatter.stringFromDate(self.published!)
-    }
+    var published: String?
     
     required init?(_ map: Map) {
         
@@ -31,7 +25,7 @@ class RSSFeed : Mappable {
         url        <- map["url"]
         author     <- map["author"]
         content    <- map["summary"]
-        published  <- (map["publishDate"], DateTransform())
+        published  <- map["publishDate"]
     }
 }
 

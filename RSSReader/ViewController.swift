@@ -49,9 +49,25 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         cell.titleLabel.text = current.title
         cell.contentLabel.text = current.content
-        cell.publishedLabel.text = current.publishedText
+        cell.publishedLabel.text = current.published
         
         return cell
+    }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("loadFeed", sender: indexPath)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "loadFeed", let destination = segue.destinationViewController as?
+            RSSFeedDetailViewController {
+            if let indexPath = sender as? NSIndexPath {
+                let x = data[indexPath.row]
+                print(x.url)
+                destination.feed = data[indexPath.row]
+            }
+        }
     }
     
     func refreshUI() {

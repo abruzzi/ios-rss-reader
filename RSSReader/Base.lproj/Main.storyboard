@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gTK-gF-aJs">
-                                <rect key="frame" x="0.0" y="81" width="600" height="519"/>
+                                <rect key="frame" x="0.0" y="81" width="600" height="475"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RSSFeedTableViewCell" rowHeight="100" id="qXR-zg-ccU" customClass="RSSFeedTableViewCell" customModule="RSSReader" customModuleProvider="target">
@@ -34,8 +34,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhg-At-OBE">
-                                                    <rect key="frame" x="118" y="31" width="454" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhg-At-OBE">
+                                                    <rect key="frame" x="118" y="33" width="454" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -57,11 +57,21 @@
                                                         <constraint firstAttribute="height" constant="80" id="vlH-pI-cAn"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7w8-U5-wla">
+                                                    <rect key="frame" x="561" y="65" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="Zjl-Rp-BDc"/>
+                                                        <constraint firstAttribute="height" constant="20" id="xxg-Kb-emg"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mhg-At-OBE" firstAttribute="top" secondItem="Lr5-pt-p1n" secondAttribute="bottom" constant="4" id="2Vr-Fd-nib"/>
+                                                <constraint firstItem="mhg-At-OBE" firstAttribute="top" secondItem="Lr5-pt-p1n" secondAttribute="bottom" constant="6" id="2Vr-Fd-nib"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7w8-U5-wla" secondAttribute="trailing" constant="269" id="6aY-R0-YUs"/>
                                                 <constraint firstItem="ang-bK-m3F" firstAttribute="top" secondItem="mhg-At-OBE" secondAttribute="bottom" constant="25.5" id="6uI-Xy-piX"/>
                                                 <constraint firstItem="mhg-At-OBE" firstAttribute="leading" secondItem="Lr5-pt-p1n" secondAttribute="leading" id="CR5-3R-Ihd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7w8-U5-wla" secondAttribute="trailing" constant="11" id="I3R-y8-67U"/>
                                                 <constraint firstItem="ang-bK-m3F" firstAttribute="bottom" secondItem="Ht6-Fs-acD" secondAttribute="bottom" id="Icv-5P-ItQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mhg-At-OBE" secondAttribute="trailing" constant="20" id="SMX-7C-IBM"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Lr5-pt-p1n" secondAttribute="trailing" constant="20" id="SfE-Bz-e39"/>
@@ -69,11 +79,13 @@
                                                 <constraint firstItem="Lr5-pt-p1n" firstAttribute="leading" secondItem="Ht6-Fs-acD" secondAttribute="trailing" constant="19" id="aae-VB-Pn6"/>
                                                 <constraint firstItem="ang-bK-m3F" firstAttribute="leading" secondItem="Lr5-pt-p1n" secondAttribute="leading" id="des-iO-HCT"/>
                                                 <constraint firstItem="Lr5-pt-p1n" firstAttribute="top" secondItem="Ht6-Fs-acD" secondAttribute="top" id="jIE-5Z-C0e"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="7w8-U5-wla" secondAttribute="bottom" constant="6.5" id="oN7-vW-rph"/>
                                                 <constraint firstItem="Ht6-Fs-acD" firstAttribute="centerY" secondItem="Tec-MK-xrB" secondAttribute="centerY" id="sFC-Do-dOe"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="6uI-Xy-piX"/>
+                                                    <exclude reference="6aY-R0-YUs"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -82,6 +94,7 @@
                                             <outlet property="heroImageView" destination="Ht6-Fs-acD" id="MSR-0W-lp7"/>
                                             <outlet property="publishedLabel" destination="ang-bK-m3F" id="T5b-A2-Fkq"/>
                                             <outlet property="titleLabel" destination="Lr5-pt-p1n" id="VCn-lf-bUY"/>
+                                            <segue destination="WoA-mB-HA3" kind="show" identifier="loadFeed" id="hi1-mA-QUY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -100,17 +113,15 @@
                             <constraint firstItem="gTK-gF-aJs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="17" id="aLo-eJ-DKD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gTK-gF-aJs" secondAttribute="trailing" constant="-20" id="vXo-RX-Chc"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="85Z-Rx-pKx" appends="YES" id="vKw-5u-mIx"/>
-                        </connections>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="RSS Reader" id="7IT-sm-2uY"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="gTK-gF-aJs" id="10D-Xh-h4h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="85Z-Rx-pKx"/>
             </objects>
             <point key="canvasLocation" x="1123" y="387"/>
         </scene>
@@ -131,6 +142,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3M-FG-hVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="332" y="-303"/>
+        </scene>
+        <!--Feed Detail View Controller-->
+        <scene sceneID="mgJ-UN-Coa">
+            <objects>
+                <viewController id="WoA-mB-HA3" customClass="RSSFeedDetailViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bfm-MV-hGQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="5lF-lU-lOo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1gy-8A-DpF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfW-cv-zIR">
+                                <rect key="frame" x="20" y="64" width="560" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1gy-8A-DpF" id="KY5-hA-TaS"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cfW-cv-zIR" firstAttribute="leading" secondItem="1gy-8A-DpF" secondAttribute="leadingMargin" id="GzL-6s-feL"/>
+                            <constraint firstItem="5lF-lU-lOo" firstAttribute="top" secondItem="cfW-cv-zIR" secondAttribute="bottom" id="I1N-An-CH9"/>
+                            <constraint firstItem="cfW-cv-zIR" firstAttribute="top" secondItem="Bfm-MV-hGQ" secondAttribute="bottom" id="hK6-Qr-hkN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cfW-cv-zIR" secondAttribute="trailing" id="ycv-2C-x0d"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="view" destination="1gy-8A-DpF" id="aIV-7T-xWc"/>
+                        <outlet property="webView" destination="cfW-cv-zIR" id="mlx-rP-czw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nlo-A3-Dlz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="440" y="759"/>
         </scene>
     </scenes>
 </document>
