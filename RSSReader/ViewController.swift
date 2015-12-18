@@ -63,8 +63,6 @@ class ViewController: UIViewController, UITableViewDataSource {
         if segue.identifier == "loadFeed", let destination = segue.destinationViewController as?
             RSSFeedDetailViewController {
             if let indexPath = sender as? NSIndexPath {
-                let x = data[indexPath.row]
-                print(x.url)
                 destination.feed = data[indexPath.row]
             }
         }

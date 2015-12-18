@@ -94,7 +94,6 @@
                                             <outlet property="heroImageView" destination="Ht6-Fs-acD" id="MSR-0W-lp7"/>
                                             <outlet property="publishedLabel" destination="ang-bK-m3F" id="T5b-A2-Fkq"/>
                                             <outlet property="titleLabel" destination="Lr5-pt-p1n" id="VCn-lf-bUY"/>
-                                            <segue destination="WoA-mB-HA3" kind="show" identifier="loadFeed" id="hi1-mA-QUY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -119,6 +118,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="gTK-gF-aJs" id="10D-Xh-h4h"/>
+                        <segue destination="WoA-mB-HA3" kind="show" identifier="loadFeed" id="UEB-D8-lsb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -156,7 +156,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfW-cv-zIR">
-                                <rect key="frame" x="20" y="64" width="560" height="492"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="1gy-8A-DpF" id="KY5-hA-TaS"/>
@@ -165,10 +165,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cfW-cv-zIR" firstAttribute="leading" secondItem="1gy-8A-DpF" secondAttribute="leadingMargin" id="GzL-6s-feL"/>
+                            <constraint firstItem="cfW-cv-zIR" firstAttribute="leading" secondItem="1gy-8A-DpF" secondAttribute="leadingMargin" constant="-20" id="GzL-6s-feL"/>
                             <constraint firstItem="5lF-lU-lOo" firstAttribute="top" secondItem="cfW-cv-zIR" secondAttribute="bottom" id="I1N-An-CH9"/>
                             <constraint firstItem="cfW-cv-zIR" firstAttribute="top" secondItem="Bfm-MV-hGQ" secondAttribute="bottom" id="hK6-Qr-hkN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cfW-cv-zIR" secondAttribute="trailing" id="ycv-2C-x0d"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cfW-cv-zIR" secondAttribute="trailing" constant="-20" id="ycv-2C-x0d"/>
                         </constraints>
                     </view>
                     <connections>
