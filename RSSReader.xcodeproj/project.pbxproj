@@ -18,7 +18,6 @@
 		6EF854DA1C2035A800F6C88A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EF854D81C2035A800F6C88A /* Main.storyboard */; };
 		6EF854DC1C2035A800F6C88A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EF854DB1C2035A800F6C88A /* Assets.xcassets */; };
 		6EF854DF1C2035A800F6C88A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EF854DD1C2035A800F6C88A /* LaunchScreen.storyboard */; };
-		6EF854E71C20387300F6C88A /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF854E61C20387300F6C88A /* FeedModel.swift */; };
 		830C8AA38028DEA3AD745B62 /* Pods_RSSReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0341084AA2846AE1B54E0C71 /* Pods_RSSReader.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +37,6 @@
 		6EF854DB1C2035A800F6C88A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EF854DE1C2035A800F6C88A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6EF854E01C2035A800F6C88A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6EF854E61C20387300F6C88A /* FeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		D99DED51B74FEECCC9E13CE9 /* Pods-RSSReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSSReader/Pods-RSSReader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +81,6 @@
 				6EF854DB1C2035A800F6C88A /* Assets.xcassets */,
 				6EF854DD1C2035A800F6C88A /* LaunchScreen.storyboard */,
 				6EF854E01C2035A800F6C88A /* Info.plist */,
-				6EF854E61C20387300F6C88A /* FeedModel.swift */,
 				6E9FF2821C229A8100A695DA /* RSSFeedTableViewCell.swift */,
 				6E4444291C24235200F3896A /* RSSFeedDetailViewController.swift */,
 				6E3FA3801D4F330300A130C3 /* SignInViewController.swift */,
@@ -237,7 +234,6 @@
 				6E3FA3831D4F384C00A130C3 /* AppState.swift in Sources */,
 				6E3FA3811D4F330300A130C3 /* SignInViewController.swift in Sources */,
 				6E44442A1C24235200F3896A /* RSSFeedDetailViewController.swift in Sources */,
-				6EF854E71C20387300F6C88A /* FeedModel.swift in Sources */,
 				6EF854D51C2035A800F6C88A /* AppDelegate.swift in Sources */,
 				6E3FA3851D4F3AF900A130C3 /* Constants.swift in Sources */,
 			);
