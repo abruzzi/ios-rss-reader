@@ -7,6 +7,9 @@ target 'RSSReader' do
     pod 'Alamofire', '~> 3.0'
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
     pod 'ObjectMapper', '~> 1.0'
-    pod 'Firebase'
+    
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
 end
 
