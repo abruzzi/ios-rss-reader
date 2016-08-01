@@ -16,4 +16,12 @@ struct Constants {
     struct Segues {
         static let SignInToFp = "showFeedList"
     }
+    
+    struct MessageFields {
+        static let title = "title"
+        static let url = "url"
+        static let author = "author"
+        static let content = "summary"
+        static let published = "publishDate"
+    }
 }

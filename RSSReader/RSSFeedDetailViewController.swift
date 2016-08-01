@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class RSSFeedDetailViewController: UIViewController {
 
     @IBOutlet weak var webView: UIWebView!
     
-    var feed: RSSFeed!
+    var feedSnapshot: FIRDataSnapshot!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,19 +27,13 @@ class RSSFeedDetailViewController: UIViewController {
     }
     
     func loadPage() {
-        if(self.feed.url != nil){
-            let request: NSURLRequest = NSURLRequest.init(URL: NSURL(string: self.feed.url!)!)
+        let feed = feedSnapshot.value as! Dictionary<String, String>
+        let url = feed[Constants.MessageFields.url] as String!
+        
+        if(url != nil){
+            let request: NSURLRequest = NSURLRequest.init(URL: NSURL(string: url)!)
             self.webView.loadRequest(request)
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

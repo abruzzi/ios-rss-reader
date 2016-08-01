@@ -11,24 +11,32 @@ import Alamofire
 import SwiftyJSON
 import ObjectMapper
 
-class ViewController: UIViewController, UITableViewDataSource {
+import Firebase
+
+class FeedListViewController: UIViewController, UITableViewDataSource {
+    
+    var ref: FIRDatabaseReference!
+    var feeds: [FIRDataSnapshot]! = []
+    private var _refHandle: FIRDatabaseHandle!
+    
+    deinit {
+        self.ref.child("feeds").removeObserverWithHandle(_refHandle)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        Alamofire.request(.GET, "http://127.0.0.1:8080/api/feeds").validate().responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    self.data = Mapper<RSSFeed>().mapArray(value)!
-                    self.tableView.reloadData()
-                }
-            case .Failure(let error):
-                print(error)
-            }
-        }
+        configureDatabase()
     }
-
+    
+    func configureDatabase() {
+        ref = FIRDatabase.database().reference()
+        
+        _refHandle = self.ref.child("feeds").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+            self.feeds.append(snapshot)
+            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.feeds.count-1, inSection: 0)], withRowAnimation: .Automatic)
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -36,20 +44,19 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var data:[RSSFeed] = []
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return feeds.count
     }
-    
+ 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RSSFeedTableViewCell", forIndexPath: indexPath) as! RSSFeedTableViewCell
         
-        let current = data[indexPath.row]
+        let feedSnapshot: FIRDataSnapshot! = self.feeds[indexPath.row]
+        let feed = feedSnapshot.value as! Dictionary<String, String>
         
-        cell.titleLabel.text = current.title
-        cell.contentLabel.text = current.content
-        cell.publishedLabel.text = current.published
+        cell.titleLabel.text = feed[Constants.MessageFields.title] as String!
+        cell.contentLabel.text = feed[Constants.MessageFields.content] as String!
+        cell.publishedLabel.text = feed[Constants.MessageFields.published] as String!
         
         return cell
     }
@@ -63,7 +70,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         if segue.identifier == "loadFeed", let destination = segue.destinationViewController as?
             RSSFeedDetailViewController {
             if let indexPath = sender as? NSIndexPath {
-                destination.feed = data[indexPath.row]
+                destination.feedSnapshot = self.feeds[indexPath.row]
             }
         }
     }
