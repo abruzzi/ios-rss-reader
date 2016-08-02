@@ -8,7 +8,6 @@
         <!--Table View Controller-->
         <scene sceneID="OyE-fm-4gP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="358-mn-WO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="vVE-Cd-xcc" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Llj-Wh-oza">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -30,6 +29,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="358-mn-WO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1219" y="-520"/>
         </scene>
@@ -77,9 +77,9 @@
                                                     <color key="textColor" red="0.83529411764705885" green="0.81960784313725488" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ht6-Fs-acD">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ht6-Fs-acD">
                                                     <rect key="frame" x="19" y="10" width="80" height="80"/>
-                                                    <color key="backgroundColor" red="0.83529411764705885" green="0.82745098039215681" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="I4I-pB-Ff9"/>
                                                         <constraint firstAttribute="height" constant="80" id="vlH-pI-cAn"/>
@@ -235,7 +235,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76D-2c-bBM">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LLf-bg-gEX">
                                                 <rect key="frame" x="0.0" y="40" width="240" height="30"/>
@@ -246,7 +246,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqF-CY-zpB">
                                         <rect key="frame" x="0.0" y="132" width="240" height="30"/>
-                                        <color key="backgroundColor" red="0.23721575736999512" green="0.48712718486785889" blue="0.79846686124801636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.97293895483016968" green="0.55469465255737305" blue="0.098233677446842194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Sign in">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>

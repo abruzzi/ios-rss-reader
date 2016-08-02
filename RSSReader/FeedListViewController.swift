@@ -55,6 +55,20 @@ class FeedListViewController: UIViewController, UITableViewDataSource {
         cell.contentLabel.text = feed[Constants.MessageFields.content] as String!
         cell.publishedLabel.text = feed[Constants.MessageFields.published] as String!
         
+        var url = NSURL(string: "https://placeholdit.imgix.net/~text?txtsize=75&txt=IcePeak&w=800&h=600")
+        
+        let imageUrl = feed[Constants.MessageFields.heroImage] as String!
+        if(!imageUrl.isEmpty) {
+            url = NSURL(string: imageUrl)
+        }
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            let data = NSData(contentsOfURL: url!)
+            dispatch_async(dispatch_get_main_queue(), {
+                cell.heroImageView.image = UIImage(data: data!)
+            })
+        }
+        
         return cell
     }
     
