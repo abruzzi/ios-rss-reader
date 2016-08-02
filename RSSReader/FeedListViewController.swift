@@ -65,10 +65,6 @@ class FeedListViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.publishedLabel.text = feed[Constants.MessageFields.published] as String!
         
         let imageUrl = feed[Constants.MessageFields.heroImage] as String!
-        
-//        if(imageUrl.isEmpty) {
-//            imageUrl = "https://placeholdit.imgix.net/~text?txtsize=75&txt=IcePeak&w=800&h=600"
-//        }
 
         cell.heroImageView.sd_setImageWithURL(NSURL(string: imageUrl), placeholderImage: UIImage(named: "icepeak-placeholder"))
         

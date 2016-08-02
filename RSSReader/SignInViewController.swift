@@ -49,6 +49,15 @@ class SignInViewController: UIViewController {
         AppState.sharedInstance.photoUrl = user?.photoURL
         AppState.sharedInstance.signedIn = true
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let uid = user?.uid {
+            defaults.setObject(uid, forKey: "currentUid")
+        }
+        
+        if let email = user?.email {
+            defaults.setObject(email, forKey: "currentEmail")
+        }
+        
         activityIndicator.stopAnimation()
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
         performSegueWithIdentifier(Constants.Segues.SignInToFp, sender: nil)

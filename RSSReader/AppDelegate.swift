@@ -18,6 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var initialViewController = storyboard.instantiateViewControllerWithIdentifier("signInStoryboard")
+        
+        if let _ = defaults.stringForKey("currentUid"), _ = defaults.stringForKey("currentEmail") {
+            initialViewController = storyboard.instantiateViewControllerWithIdentifier("mainStoryboard")
+        }
+        
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
