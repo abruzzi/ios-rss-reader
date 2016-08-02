@@ -3,11 +3,12 @@ require 'date'
 require 'nokogiri'
 require 'json'
 
-feed = Feedjira::Feed.parse File.open('./icodeit.atom.20160801.xml').read
+# feed = Feedjira::Feed.parse File.open('./icodeit.atom.20160801.xml').read
+feed = Feedjira::Feed.parse File.open('./notes.xml').read
 
 feeds_data = {}
 feed.entries.each_with_index do |entity, index|
-	node = Nokogiri::HTML.parse(entity.content || "")
+	node = Nokogiri::HTML.parse(entity.content || entity.summary|| "")
 	imgs = node.css('img')
 
 	post_url = ''
@@ -20,7 +21,7 @@ feed.entries.each_with_index do |entity, index|
 		:title => entity.title,
 		:author => entity.author || 'unknown',
 		:summary => node.text[0..100]+'...',
-		:publishDate => entity.updated.to_date.to_s,
+		:publishDate => (entity.updated || DateTime.now).to_date.to_s,
 		:heroImage => post_url
 	}
 end

@@ -55,9 +55,6 @@ class FeedListViewController: UIViewController, UITableViewDataSource {
         cell.titleLabel.text = feed[Constants.MessageFields.title] as String!
         cell.contentLabel.text = feed[Constants.MessageFields.content] as String!
         cell.publishedLabel.text = feed[Constants.MessageFields.published] as String!
-
-        
-//        var url = NSURL(string: "https://placeholdit.imgix.net/~text?txtsize=75&txt=IcePeak&w=800&h=600")
         
         var imageUrl = feed[Constants.MessageFields.heroImage] as String!
         if(imageUrl.isEmpty) {
