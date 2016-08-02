@@ -18,12 +18,10 @@ class RSSFeedDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadPage()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func loadPage() {
@@ -35,5 +33,5 @@ class RSSFeedDetailViewController: UIViewController {
             self.webView.loadRequest(request)
         }
     }
-
+    
 }

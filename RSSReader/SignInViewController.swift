@@ -20,7 +20,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
     
-    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .BallScaleMultiple, color: UIColor.orangeColor())
+    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .BallTrianglePath, color: UIColor.orangeColor())
     
     @IBAction func performSignIn(sender: AnyObject) {
         let name = userName.text

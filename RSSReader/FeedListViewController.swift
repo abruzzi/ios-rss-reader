@@ -13,13 +13,13 @@ import SDWebImage
 
 import NVActivityIndicatorView
 
-class FeedListViewController: UIViewController, UITableViewDataSource {
+class FeedListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var ref: FIRDatabaseReference!
     var feeds: [FIRDataSnapshot]! = []
     private var _refHandle: FIRDatabaseHandle!
     
-    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .BallScaleMultiple, color: UIColor.orangeColor())
+    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .BallTrianglePath, color: UIColor.orangeColor())
     
     deinit {
         self.ref.child("feeds").removeObserverWithHandle(_refHandle)
@@ -64,18 +64,19 @@ class FeedListViewController: UIViewController, UITableViewDataSource {
         cell.contentLabel.text = feed[Constants.MessageFields.content] as String!
         cell.publishedLabel.text = feed[Constants.MessageFields.published] as String!
         
-        var imageUrl = feed[Constants.MessageFields.heroImage] as String!
-        if(imageUrl.isEmpty) {
-            imageUrl = "https://placeholdit.imgix.net/~text?txtsize=75&txt=IcePeak&w=800&h=600"
-        }
+        let imageUrl = feed[Constants.MessageFields.heroImage] as String!
+        
+//        if(imageUrl.isEmpty) {
+//            imageUrl = "https://placeholdit.imgix.net/~text?txtsize=75&txt=IcePeak&w=800&h=600"
+//        }
 
-        cell.heroImageView.sd_setImageWithURL(NSURL(string: imageUrl), placeholderImage: UIImage(named: "nopic.jpg"))
+        cell.heroImageView.sd_setImageWithURL(NSURL(string: imageUrl), placeholderImage: UIImage(named: "icepeak-placeholder"))
         
         return cell
     }
     
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
         self.performSegueWithIdentifier("loadFeed", sender: indexPath)
     }
     
