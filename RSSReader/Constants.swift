@@ -18,6 +18,7 @@ struct Constants {
     }
     
     struct MessageFields {
+        static let id = "id"
         static let title = "title"
         static let url = "url"
         static let author = "author"

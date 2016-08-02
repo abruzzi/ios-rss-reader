@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RSSFeedTableViewCell: UITableViewCell {
 
@@ -15,11 +16,33 @@ class RSSFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var publishedLabel: UILabel!
     
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    var ref: FIRDatabaseReference!
+    var feedId: String?
+    
+    @IBAction func addToFavorite(sender: UIButton) {
+        print("saving... "+feedId!)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let uid = defaults.stringForKey("currentUid") {
+            ref.child("favorites/\(uid)/\(feedId!)")
+                .setValue(feedId)
+        }
+        favoriteButton.setBackgroundImage(UIImage(named: "star-full"), forState: UIControlState.Normal)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        configureDatabase()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+
+    
+    func configureDatabase() {
+        ref = FIRDatabase.database().reference()
     }
 }

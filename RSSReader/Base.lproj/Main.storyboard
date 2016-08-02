@@ -5,34 +5,64 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
-        <scene sceneID="OyE-fm-4gP">
+        <!--Favorite List View Controller-->
+        <scene sceneID="bHM-v2-vCx">
             <objects>
-                <tableViewController id="vVE-Cd-xcc" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Llj-Wh-oza">
+                <viewController id="ODf-cn-N4H" customClass="FavoriteListViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dOX-g5-o9Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="hr2-fn-hOu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gsY-hU-8v5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Llj-Wh-oza">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteFeedTableViewCell" id="vl7-92-R5S" customClass="FavoriteFeedCellTableViewCell" customModule="RSSReader" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vl7-92-R5S" id="hTS-Qs-pZe">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySr-7i-lbm">
+                                                    <rect key="frame" x="0.0" y="-0.5" width="600" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ySr-7i-lbm" firstAttribute="centerY" secondItem="hTS-Qs-pZe" secondAttribute="centerY" id="0WU-zx-M47"/>
+                                                <constraint firstItem="ySr-7i-lbm" firstAttribute="centerX" secondItem="hTS-Qs-pZe" secondAttribute="centerX" id="KDc-et-Lgt"/>
+                                                <constraint firstItem="ySr-7i-lbm" firstAttribute="width" secondItem="hTS-Qs-pZe" secondAttribute="width" id="XbX-LR-Rgi"/>
+                                                <constraint firstItem="ySr-7i-lbm" firstAttribute="height" secondItem="hTS-Qs-pZe" secondAttribute="height" id="qxy-ai-Dov"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="feedInfo" destination="ySr-7i-lbm" id="IOT-iL-H4p"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ODf-cn-N4H" id="y8q-z7-tm0"/>
+                                    <outlet property="delegate" destination="ODf-cn-N4H" id="4rm-0a-SKb"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vl7-92-R5S" customClass="RSSFeedTableViewCell" customModule="RSSReader" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vl7-92-R5S" id="hTS-Qs-pZe">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="vVE-Cd-xcc" id="MmE-tR-7pD"/>
-                            <outlet property="delegate" destination="vVE-Cd-xcc" id="3Wv-Oh-Oer"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="488-3R-Je4"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="358-mn-WO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="Upk-Km-0SZ"/>
+                    <connections>
+                        <outlet property="tableView" destination="Llj-Wh-oza" id="Veb-J0-FaM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y1y-oS-MMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1184" y="-1428"/>
+            <point key="canvasLocation" x="1138" y="-1087"/>
         </scene>
         <!--RSS Reader-->
         <scene sceneID="tne-QT-ifu">
@@ -86,13 +116,18 @@
                                                         <constraint firstAttribute="height" constant="80" id="vlH-pI-cAn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7w8-U5-wla">
-                                                    <rect key="frame" x="561" y="65" width="20" height="20"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="7w8-U5-wla">
+                                                    <rect key="frame" x="556" y="64" width="30" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="Zjl-Rp-BDc"/>
                                                         <constraint firstAttribute="height" constant="20" id="xxg-Kb-emg"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button"/>
+                                                    <state key="normal" backgroundImage="star-empty">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="addToFavorite:" destination="qXR-zg-ccU" eventType="touchUpInside" id="aVh-gm-zHF"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -120,6 +155,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentLabel" destination="mhg-At-OBE" id="rHs-Dq-Nu7"/>
+                                            <outlet property="favoriteButton" destination="7w8-U5-wla" id="plt-JI-UaA"/>
                                             <outlet property="heroImageView" destination="Ht6-Fs-acD" id="MSR-0W-lp7"/>
                                             <outlet property="publishedLabel" destination="ang-bK-m3F" id="T5b-A2-Fkq"/>
                                             <outlet property="titleLabel" destination="Lr5-pt-p1n" id="VCn-lf-bUY"/>
@@ -339,7 +375,7 @@
                     <connections>
                         <segue destination="2yW-Hf-RJJ" kind="relationship" relationship="viewControllers" id="f8n-5c-tnE"/>
                         <segue destination="DHL-8x-IVX" kind="relationship" relationship="viewControllers" id="J3q-bm-Kfg"/>
-                        <segue destination="vVE-Cd-xcc" kind="relationship" relationship="viewControllers" id="CYl-Zn-db2"/>
+                        <segue destination="ODf-cn-N4H" kind="relationship" relationship="viewControllers" id="Fwn-uv-dlt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4W4-lW-x8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -366,4 +402,7 @@
             <point key="canvasLocation" x="1080" y="983"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="star-empty" width="32" height="32"/>
+    </resources>
 </document>

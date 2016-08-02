@@ -12,7 +12,8 @@
 		6E3FA3851D4F3AF900A130C3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3FA3841D4F3AF900A130C3 /* Constants.swift */; };
 		6E44442A1C24235200F3896A /* RSSFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4444291C24235200F3896A /* RSSFeedDetailViewController.swift */; };
 		6E9FF2831C229A8100A695DA /* RSSFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9FF2821C229A8100A695DA /* RSSFeedTableViewCell.swift */; };
-		6EB4D1F51D507B2800F1C87A /* MyWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB4D1F41D507B2800F1C87A /* MyWebView.swift */; };
+		6EB4D1FB1D50E31500F1C87A /* FavoriteFeedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB4D1FA1D50E31500F1C87A /* FavoriteFeedCellTableViewCell.swift */; };
+		6EB4D1FD1D50E45B00F1C87A /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB4D1FC1D50E45B00F1C87A /* FavoriteListViewController.swift */; };
 		6EE61B171D4EEBC6000D0171 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EE61B161D4EEBC6000D0171 /* GoogleService-Info.plist */; };
 		6EF854D51C2035A800F6C88A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF854D41C2035A800F6C88A /* AppDelegate.swift */; };
 		6EF854D71C2035A800F6C88A /* FeedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF854D61C2035A800F6C88A /* FeedListViewController.swift */; };
@@ -30,7 +31,8 @@
 		6E3FA3841D4F3AF900A130C3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6E4444291C24235200F3896A /* RSSFeedDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSFeedDetailViewController.swift; sourceTree = "<group>"; };
 		6E9FF2821C229A8100A695DA /* RSSFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSFeedTableViewCell.swift; sourceTree = "<group>"; };
-		6EB4D1F41D507B2800F1C87A /* MyWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWebView.swift; sourceTree = "<group>"; };
+		6EB4D1FA1D50E31500F1C87A /* FavoriteFeedCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteFeedCellTableViewCell.swift; sourceTree = "<group>"; };
+		6EB4D1FC1D50E45B00F1C87A /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		6EE61B161D4EEBC6000D0171 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6EF854D11C2035A800F6C88A /* RSSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EF854D41C2035A800F6C88A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,9 +87,10 @@
 				6EF854E01C2035A800F6C88A /* Info.plist */,
 				6E9FF2821C229A8100A695DA /* RSSFeedTableViewCell.swift */,
 				6E4444291C24235200F3896A /* RSSFeedDetailViewController.swift */,
-				6EB4D1F41D507B2800F1C87A /* MyWebView.swift */,
 				6E3FA3801D4F330300A130C3 /* SignInViewController.swift */,
 				6E3FA3841D4F3AF900A130C3 /* Constants.swift */,
+				6EB4D1FA1D50E31500F1C87A /* FavoriteFeedCellTableViewCell.swift */,
+				6EB4D1FC1D50E45B00F1C87A /* FavoriteListViewController.swift */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";
@@ -233,12 +236,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E9FF2831C229A8100A695DA /* RSSFeedTableViewCell.swift in Sources */,
-				6EB4D1F51D507B2800F1C87A /* MyWebView.swift in Sources */,
 				6EF854D71C2035A800F6C88A /* FeedListViewController.swift in Sources */,
 				6E3FA3831D4F384C00A130C3 /* AppState.swift in Sources */,
 				6E3FA3811D4F330300A130C3 /* SignInViewController.swift in Sources */,
 				6E44442A1C24235200F3896A /* RSSFeedDetailViewController.swift in Sources */,
+				6EB4D1FB1D50E31500F1C87A /* FavoriteFeedCellTableViewCell.swift in Sources */,
 				6EF854D51C2035A800F6C88A /* AppDelegate.swift in Sources */,
+				6EB4D1FD1D50E45B00F1C87A /* FavoriteListViewController.swift in Sources */,
 				6E3FA3851D4F3AF900A130C3 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
