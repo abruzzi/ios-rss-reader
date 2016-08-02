@@ -256,6 +256,12 @@
                                             <action selector="performSignIn:" destination="VLz-eR-iOt" eventType="touchUpInside" id="2Di-p1-sov"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="xxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAV-hD-GTK">
+                                        <rect key="frame" x="0.0" y="162" width="240" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="0.26442879438400269" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="YXv-eV-qC4"/>
@@ -269,7 +275,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorMessage" destination="eAV-hD-GTK" id="EM0-nT-Plk"/>
                         <outlet property="password" destination="LLf-bg-gEX" id="PbI-sb-laf"/>
+                        <outlet property="signInButton" destination="PqF-CY-zpB" id="8kN-ve-ULO"/>
                         <outlet property="userName" destination="76D-2c-bBM" id="frO-di-H2Y"/>
                         <segue destination="2yW-Hf-RJJ" kind="show" identifier="showFeedList" id="Mdy-sz-INm"/>
                     </connections>

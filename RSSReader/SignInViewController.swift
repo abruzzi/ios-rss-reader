@@ -9,17 +9,34 @@
 import UIKit
 import Firebase
 
+import NVActivityIndicatorView
+
 class SignInViewController: UIViewController {
 
+//    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var errorMessage: UILabel!
+    
+    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .BallScaleMultiple, color: UIColor.orangeColor())
     
     @IBAction func performSignIn(sender: AnyObject) {
         let name = userName.text
         let pass = password.text
         
+        signInButton.enabled = false
+        activityIndicator.startAnimation()
+        
         FIRAuth.auth()?.signInWithEmail(name!, password: pass!) { (user, error) in
             if let error = error {
+                self.activityIndicator.stopAnimation()
+                self.signInButton.enabled = true
+                
+                self.errorMessage.text = error.localizedDescription
+                self.errorMessage.hidden = false
+                
                 print(error.localizedDescription)
                 return
             }
@@ -32,19 +49,25 @@ class SignInViewController: UIViewController {
         AppState.sharedInstance.photoUrl = user?.photoURL
         AppState.sharedInstance.signedIn = true
         
+        activityIndicator.stopAnimation()
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
         performSegueWithIdentifier(Constants.Segues.SignInToFp, sender: nil)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        let x = (self.view.frame.width-32)/2
+        let y = signInButton.frame.maxY+signInButton.frame.height+20
+        
+        activityIndicator.frame = CGRect(x: x, y: y, width: 32, height: 32)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.errorMessage.text = ""
+        self.view.addSubview(activityIndicator)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
