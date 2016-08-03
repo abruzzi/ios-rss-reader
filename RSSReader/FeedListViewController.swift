@@ -101,53 +101,53 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     }
 
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "cog")
+        return UIImage(named: "earth")
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "You have no items"
         let attribs = [
             NSFontAttributeName: UIFont.boldSystemFontOfSize(18),
-            NSForegroundColorAttributeName: UIColor.darkGrayColor()
+            NSForegroundColorAttributeName: UIColor.lightGrayColor()
         ]
         
         return NSAttributedString(string: text, attributes: attribs)
     }
-    
-    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "Add items to track the things that are important to you. Add your first item by tapping the + button."
-        
-        let para = NSMutableParagraphStyle()
-        para.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        para.alignment = NSTextAlignment.Center
-        
-        let attribs = [
-            NSFontAttributeName: UIFont.systemFontOfSize(14),
-            NSForegroundColorAttributeName: UIColor.lightGrayColor(),
-            NSParagraphStyleAttributeName: para
-        ]
-        
-        return NSAttributedString(string: text, attributes: attribs)
-    }
+//
+//    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+//        let text = "Add items to track the things that are important to you. Add your first item by tapping the + button."
+//        
+//        let para = NSMutableParagraphStyle()
+//        para.lineBreakMode = NSLineBreakMode.ByWordWrapping
+//        para.alignment = NSTextAlignment.Center
+//        
+//        let attribs = [
+//            NSFontAttributeName: UIFont.systemFontOfSize(14),
+//            NSForegroundColorAttributeName: UIColor.lightGrayColor(),
+//            NSParagraphStyleAttributeName: para
+//        ]
+//        
+//        return NSAttributedString(string: text, attributes: attribs)
+//    }
     
     func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
         return true
     }
     
     func configureCell(cell: MCSwipeTableViewCell, indexPath: NSIndexPath) {
-        let clockViewImage =  UIImage(named: "cog")
+        let clockViewImage =  UIImage(named: "alarm-clock")
         let clockView = UIImageView(image: clockViewImage)
         
-        cell.setSwipeGestureWithView(clockView, color: UIColor(rgba: "#05C3DE"), mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
+        cell.setSwipeGestureWithView(clockView, color: UIColor(rgba: "#5CB52A"), mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
             NSLog("Did swipe \"Clock View\" cell");
             return ()
         });
         
         
-        let listViewImage =  UIImage(named: "home")
+        let listViewImage =  UIImage(named: "checkmark")
         let listView = UIImageView(image: listViewImage)
         
-        cell.setSwipeGestureWithView(listView, color: UIColor(rgba: "#F68D2E"), mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
+        cell.setSwipeGestureWithView(listView, color: UIColor(rgba: "#F48D3B"), mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
             NSLog("Did swipe \"list View\" cell");
             return ()
         });

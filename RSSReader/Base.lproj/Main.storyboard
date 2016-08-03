@@ -116,26 +116,11 @@
                                                         <constraint firstAttribute="height" constant="80" id="vlH-pI-cAn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="7w8-U5-wla">
-                                                    <rect key="frame" x="556" y="64" width="30" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="Zjl-Rp-BDc"/>
-                                                        <constraint firstAttribute="height" constant="20" id="xxg-Kb-emg"/>
-                                                    </constraints>
-                                                    <state key="normal" backgroundImage="star-empty">
-                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="addToFavorite:" destination="qXR-zg-ccU" eventType="touchUpInside" id="aVh-gm-zHF"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mhg-At-OBE" firstAttribute="top" secondItem="Lr5-pt-p1n" secondAttribute="bottom" constant="6" id="2Vr-Fd-nib"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="7w8-U5-wla" secondAttribute="trailing" constant="269" id="6aY-R0-YUs"/>
                                                 <constraint firstItem="ang-bK-m3F" firstAttribute="top" secondItem="mhg-At-OBE" secondAttribute="bottom" constant="25.5" id="6uI-Xy-piX"/>
                                                 <constraint firstItem="mhg-At-OBE" firstAttribute="leading" secondItem="Lr5-pt-p1n" secondAttribute="leading" id="CR5-3R-Ihd"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="7w8-U5-wla" secondAttribute="trailing" constant="11" id="I3R-y8-67U"/>
                                                 <constraint firstItem="ang-bK-m3F" firstAttribute="bottom" secondItem="Ht6-Fs-acD" secondAttribute="bottom" id="Icv-5P-ItQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mhg-At-OBE" secondAttribute="trailing" constant="20" id="SMX-7C-IBM"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Lr5-pt-p1n" secondAttribute="trailing" constant="20" id="SfE-Bz-e39"/>
@@ -143,19 +128,16 @@
                                                 <constraint firstItem="Lr5-pt-p1n" firstAttribute="leading" secondItem="Ht6-Fs-acD" secondAttribute="trailing" constant="19" id="aae-VB-Pn6"/>
                                                 <constraint firstItem="ang-bK-m3F" firstAttribute="leading" secondItem="Lr5-pt-p1n" secondAttribute="leading" id="des-iO-HCT"/>
                                                 <constraint firstItem="Lr5-pt-p1n" firstAttribute="top" secondItem="Ht6-Fs-acD" secondAttribute="top" id="jIE-5Z-C0e"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="7w8-U5-wla" secondAttribute="bottom" constant="6.5" id="oN7-vW-rph"/>
                                                 <constraint firstItem="Ht6-Fs-acD" firstAttribute="centerY" secondItem="Tec-MK-xrB" secondAttribute="centerY" id="sFC-Do-dOe"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="6uI-Xy-piX"/>
-                                                    <exclude reference="6aY-R0-YUs"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contentLabel" destination="mhg-At-OBE" id="rHs-Dq-Nu7"/>
-                                            <outlet property="favoriteButton" destination="7w8-U5-wla" id="plt-JI-UaA"/>
                                             <outlet property="heroImageView" destination="Ht6-Fs-acD" id="MSR-0W-lp7"/>
                                             <outlet property="publishedLabel" destination="ang-bK-m3F" id="T5b-A2-Fkq"/>
                                             <outlet property="titleLabel" destination="Lr5-pt-p1n" id="VCn-lf-bUY"/>
@@ -418,7 +400,4 @@
             <point key="canvasLocation" x="1080" y="983"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="star-empty" width="32" height="32"/>
-    </resources>
 </document>

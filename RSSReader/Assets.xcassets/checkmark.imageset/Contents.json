@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "star-empty.png",
+      "filename" : "checkmark.png",
       "scale" : "1x"
     },
     {
