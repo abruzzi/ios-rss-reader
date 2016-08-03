@@ -37,7 +37,7 @@ class FeedListViewController: UIViewController, UITableViewDataSource, UITableVi
         activityIndicator.frame = CGRect(x: (view.frame.width-32)/2, y: (view.frame.height-32)/2, width: 32, height: 32)
         activityIndicator.startAnimation()
         
-        _refHandle = self.ref.child("feeds").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+        _refHandle = self.ref.child("feeds").queryLimitedToFirst(12).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
             self.feeds.append(snapshot)
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.feeds.count-1, inSection: 0)], withRowAnimation: .Automatic)
             self.activityIndicator.stopAnimation()
