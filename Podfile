@@ -9,5 +9,6 @@ target 'RSSReader' do
     pod 'Firebase/Auth'
     pod 'SDWebImage', '~>3.8'
     pod 'NVActivityIndicatorView'
+    pod 'DZNEmptyDataSet'
 end
 

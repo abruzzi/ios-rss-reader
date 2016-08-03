@@ -1,4 +1,5 @@
 PODS:
+  - DZNEmptyDataSet (1.8.1)
   - Firebase/Analytics (3.3.0):
     - FirebaseAnalytics (= 3.2.1)
   - Firebase/Auth (3.3.0):
@@ -38,6 +39,7 @@ PODS:
   - SDWebImage/Core (3.8.1)
 
 DEPENDENCIES:
+  - DZNEmptyDataSet
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -45,6 +47,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Firebase: 6250071f0e2440a5c4c67b8cb6b868f868237ac3
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
   FirebaseAuth: 5efddc3fae47042b73585f083f956462be4f5b8e
@@ -58,6 +61,6 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 68f38da8daaab95ba3b9ec40abf20e5201521bc9
+PODFILE CHECKSUM: 6344fa0259083e7bed95cd7fcde4a4f3b6fcf87c
 
 COCOAPODS: 1.0.1

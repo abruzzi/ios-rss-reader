@@ -12,8 +12,9 @@ import Firebase
 import SDWebImage
 
 import NVActivityIndicatorView
+import DZNEmptyDataSet
 
-class FeedListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     var ref: FIRDatabaseReference!
     var feeds: [FIRDataSnapshot]! = []
@@ -27,6 +28,11 @@ class FeedListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
+        
         self.view.addSubview(activityIndicator)
         configureDatabase()
     }
@@ -36,7 +42,6 @@ class FeedListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         activityIndicator.frame = CGRect(x: (view.frame.width-32)/2, y: (view.frame.height-32)/2, width: 32, height: 32)
         activityIndicator.startAnimation()
-        
         _refHandle = self.ref.child("feeds").queryLimitedToFirst(12).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
             self.feeds.append(snapshot)
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.feeds.count-1, inSection: 0)], withRowAnimation: .Automatic)
@@ -46,7 +51,10 @@ class FeedListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print(view.frame.height)
     }
 
     @IBOutlet weak var tableView: UITableView!
@@ -86,10 +94,39 @@ class FeedListViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
-    
-    func refreshUI() {
-        tableView.reloadData()
-    }
 
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "cog")
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let text = "You have no items"
+        let attribs = [
+            NSFontAttributeName: UIFont.boldSystemFontOfSize(18),
+            NSForegroundColorAttributeName: UIColor.darkGrayColor()
+        ]
+        
+        return NSAttributedString(string: text, attributes: attribs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let text = "Add items to track the things that are important to you. Add your first item by tapping the + button."
+        
+        let para = NSMutableParagraphStyle()
+        para.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        para.alignment = NSTextAlignment.Center
+        
+        let attribs = [
+            NSFontAttributeName: UIFont.systemFontOfSize(14),
+            NSForegroundColorAttributeName: UIColor.lightGrayColor(),
+            NSParagraphStyleAttributeName: para
+        ]
+        
+        return NSAttributedString(string: text, attributes: attribs)
+    }
+    
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
 }
 
