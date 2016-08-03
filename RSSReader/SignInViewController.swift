@@ -20,7 +20,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var errorMessage: UILabel!
     
-    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .BallTrianglePath, color: UIColor.orangeColor())
+    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 40, height: 40), type: .Orbit, color: UIColor.orangeColor())
     
     @IBAction func performSignIn(sender: AnyObject) {
         let name = userName.text
@@ -64,10 +64,10 @@ class SignInViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        let x = (self.view.frame.width-32)/2
+        let x = (self.view.frame.width-40)/2
         let y = signInButton.frame.maxY+signInButton.frame.height+20
         
-        activityIndicator.frame = CGRect(x: x, y: y, width: 32, height: 32)
+        activityIndicator.frame = CGRect(x: x, y: y, width: 40, height: 40)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

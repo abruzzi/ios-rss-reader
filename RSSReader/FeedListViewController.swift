@@ -14,13 +14,16 @@ import SDWebImage
 import NVActivityIndicatorView
 import DZNEmptyDataSet
 
+import MCSwipeTableViewCell
+import UIColor_Hex_Swift
+
 class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     var ref: FIRDatabaseReference!
     var feeds: [FIRDataSnapshot]! = []
     private var _refHandle: FIRDatabaseHandle!
     
-    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .BallTrianglePath, color: UIColor.orangeColor())
+    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 40, height: 40), type: .Orbit, color: UIColor.orangeColor())
     
     deinit {
         self.ref.child("feeds").removeObserverWithHandle(_refHandle)
@@ -40,7 +43,7 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     func configureDatabase() {
         ref = FIRDatabase.database().reference()
         
-        activityIndicator.frame = CGRect(x: (view.frame.width-32)/2, y: (view.frame.height-32)/2, width: 32, height: 32)
+        activityIndicator.frame = CGRect(x: (view.frame.width-40)/2, y: (view.frame.height-40)/2, width: 40, height: 40)
         activityIndicator.startAnimation()
         _refHandle = self.ref.child("feeds").queryLimitedToFirst(12).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
             self.feeds.append(snapshot)
@@ -77,6 +80,8 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         let imageUrl = feed[Constants.MessageFields.heroImage] as String!
 
         cell.heroImageView.sd_setImageWithURL(NSURL(string: imageUrl), placeholderImage: UIImage(named: "icepeak-placeholder"))
+        
+        self.configureCell(cell, indexPath: indexPath)
         
         return cell
     }
@@ -127,6 +132,26 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     
     func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
         return true
+    }
+    
+    func configureCell(cell: MCSwipeTableViewCell, indexPath: NSIndexPath) {
+        let clockViewImage =  UIImage(named: "cog")
+        let clockView = UIImageView(image: clockViewImage)
+        
+        cell.setSwipeGestureWithView(clockView, color: UIColor(rgba: "#05C3DE"), mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
+            NSLog("Did swipe \"Clock View\" cell");
+            return ()
+        });
+        
+        
+        let listViewImage =  UIImage(named: "home")
+        let listView = UIImageView(image: listViewImage)
+        
+        cell.setSwipeGestureWithView(listView, color: UIColor(rgba: "#F68D2E"), mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
+            NSLog("Did swipe \"list View\" cell");
+            return ()
+        });
+        
     }
 }
 

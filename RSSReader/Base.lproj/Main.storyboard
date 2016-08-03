@@ -28,7 +28,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySr-7i-lbm">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySr-7i-lbm">
                                                     <rect key="frame" x="0.0" y="-0.5" width="600" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,14 +55,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="Upk-Km-0SZ"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="Upk-Km-0SZ"/>
                     <connections>
                         <outlet property="tableView" destination="Llj-Wh-oza" id="Veb-J0-FaM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y1y-oS-MMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="-1087"/>
+            <point key="canvasLocation" x="1138" y="-1415"/>
         </scene>
         <!--RSS Reader-->
         <scene sceneID="tne-QT-ifu">
@@ -202,25 +202,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73c-eG-FFU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="1K3-Av-MDl">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="sxu-4L-qO8"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="sxu-4L-qO8"/>
-                                    </mask>
-                                </variation>
-                            </webView>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="IKS-VE-RGt">
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IKS-VE-RGt" id="XfI-7r-UDG">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiW-8p-5Ob">
+                                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                                    <state key="normal" title="Sign Out">
+                                                        <color key="titleColor" red="1" green="0.59027504920959473" blue="0.11467901617288589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uiW-8p-5Ob" firstAttribute="centerX" secondItem="XfI-7r-UDG" secondAttribute="centerX" id="5Bq-Ag-nDt"/>
+                                                <constraint firstItem="uiW-8p-5Ob" firstAttribute="centerY" secondItem="XfI-7r-UDG" secondAttribute="centerY" id="PZI-yL-MlW"/>
+                                                <constraint firstItem="uiW-8p-5Ob" firstAttribute="width" secondItem="XfI-7r-UDG" secondAttribute="width" id="Qlz-he-F5h"/>
+                                                <constraint firstItem="uiW-8p-5Ob" firstAttribute="height" secondItem="XfI-7r-UDG" secondAttribute="height" id="wGU-lJ-Lkz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="73c-eG-FFU" firstAttribute="height" secondItem="9v4-Tt-ohg" secondAttribute="height" id="4XW-8w-w6f"/>
-                            <constraint firstItem="73c-eG-FFU" firstAttribute="centerX" secondItem="9v4-Tt-ohg" secondAttribute="centerX" id="icL-9P-RPA"/>
-                            <constraint firstItem="73c-eG-FFU" firstAttribute="width" secondItem="9v4-Tt-ohg" secondAttribute="width" id="neO-os-w1d"/>
-                            <constraint firstItem="73c-eG-FFU" firstAttribute="centerY" secondItem="9v4-Tt-ohg" secondAttribute="centerY" id="q7D-if-h4g"/>
+                            <constraint firstItem="1K3-Av-MDl" firstAttribute="width" secondItem="9v4-Tt-ohg" secondAttribute="width" id="9i1-sV-yqJ"/>
+                            <constraint firstItem="1K3-Av-MDl" firstAttribute="height" secondItem="9v4-Tt-ohg" secondAttribute="height" id="HHM-cM-DtM"/>
+                            <constraint firstItem="1K3-Av-MDl" firstAttribute="centerY" secondItem="9v4-Tt-ohg" secondAttribute="centerY" id="iBR-oW-Wjq"/>
+                            <constraint firstItem="1K3-Av-MDl" firstAttribute="centerX" secondItem="9v4-Tt-ohg" secondAttribute="centerX" id="slB-IS-68y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OXm-00-oiP"/>
@@ -260,9 +276,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfW-cv-zIR">
+                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfW-cv-zIR">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="1gy-8A-DpF" id="KY5-hA-TaS"/>
                                 </connections>

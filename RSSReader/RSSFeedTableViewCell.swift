@@ -9,7 +9,9 @@
 import UIKit
 import Firebase
 
-class RSSFeedTableViewCell: UITableViewCell {
+import MCSwipeTableViewCell
+
+class RSSFeedTableViewCell: MCSwipeTableViewCell {
 
     @IBOutlet weak var heroImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
