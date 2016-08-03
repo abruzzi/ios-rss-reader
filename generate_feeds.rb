@@ -2,12 +2,13 @@ require 'feedjira'
 require 'date'
 require 'nokogiri'
 require 'json'
+require 'securerandom'
 
 # feed = Feedjira::Feed.parse File.open('./icodeit.atom.20160801.xml').read
-feed = Feedjira::Feed.parse File.open('./notes.xml').read
+feed = Feedjira::Feed.parse File.open('./jianshu-editor-notes.xml').read
 
 feeds_data = {}
-feed.entries.each_with_index do |entity, index|
+feed.entries.each do |entity|
 	node = Nokogiri::HTML.parse(entity.content || entity.summary|| "")
 	imgs = node.css('img')
 
@@ -16,7 +17,7 @@ feed.entries.each_with_index do |entity, index|
 		post_url = imgs[0].attr('src')
 	end
 
-	feeds_data["feed-#{index}"] = {
+	feeds_data[SecureRandom.uuid.gsub('-', '')] = {
 		:url => entity.url,
 		:title => entity.title,
 		:author => entity.author || 'unknown',
