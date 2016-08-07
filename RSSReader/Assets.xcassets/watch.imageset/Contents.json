@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "feed.png",
+      "filename" : "watch.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "feed@2x.png",
+      "filename" : "watch@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "feed@3x.png",
+      "filename" : "watch@3x.png",
       "scale" : "3x"
     }
   ],

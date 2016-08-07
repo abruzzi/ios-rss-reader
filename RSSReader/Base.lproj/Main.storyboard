@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Llj-Wh-oza">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="84" width="600" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RSSFeedTableViewCell" rowHeight="100" id="GP8-Rp-Zh3" customClass="RSSFeedTableViewCell" customModule="RSSReader" customModuleProvider="target">
@@ -95,7 +95,7 @@
                         <constraints>
                             <constraint firstItem="Llj-Wh-oza" firstAttribute="bottom" secondItem="hr2-fn-hOu" secondAttribute="top" id="1Uw-Jc-4ve"/>
                             <constraint firstItem="Llj-Wh-oza" firstAttribute="leading" secondItem="gsY-hU-8v5" secondAttribute="leadingMargin" constant="-20" id="3eh-m1-BuT"/>
-                            <constraint firstItem="Llj-Wh-oza" firstAttribute="top" secondItem="dOX-g5-o9Q" secondAttribute="bottom" id="Sbv-7S-zVA"/>
+                            <constraint firstItem="Llj-Wh-oza" firstAttribute="top" secondItem="dOX-g5-o9Q" secondAttribute="bottom" constant="20" id="Sbv-7S-zVA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Llj-Wh-oza" secondAttribute="trailing" constant="-20" id="gZV-Ib-2Kx"/>
                         </constraints>
                     </view>
@@ -121,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gTK-gF-aJs">
-                                <rect key="frame" x="0.0" y="81" width="600" height="475"/>
+                                <rect key="frame" x="0.0" y="84" width="600" height="472"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RSSFeedTableViewCell" rowHeight="100" id="qXR-zg-ccU" customClass="RSSFeedTableViewCell" customModule="RSSReader" customModuleProvider="target">
@@ -200,7 +200,7 @@
                         <constraints>
                             <constraint firstItem="gTK-gF-aJs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="5QV-96-lAf"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gTK-gF-aJs" secondAttribute="bottom" id="Gq8-6o-9cu"/>
-                            <constraint firstItem="gTK-gF-aJs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="17" id="aLo-eJ-DKD"/>
+                            <constraint firstItem="gTK-gF-aJs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="aLo-eJ-DKD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gTK-gF-aJs" secondAttribute="trailing" constant="-20" id="vXo-RX-Chc"/>
                         </constraints>
                     </view>
@@ -460,7 +460,7 @@
         <scene sceneID="sEf-8r-PIe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VFq-g8-gNA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Snoozed" image="snooze" id="Upk-Km-0SZ"/>
+                    <tabBarItem key="tabBarItem" title="Snoozed" image="watch" id="Upk-Km-0SZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4a5-36-nk3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -477,8 +477,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="feed" width="30" height="30"/>
-        <image name="settings" width="30" height="30"/>
-        <image name="snooze" width="30" height="30"/>
+        <image name="feed" width="50" height="50"/>
+        <image name="settings" width="50" height="50"/>
+        <image name="watch" width="50" height="50"/>
     </resources>
 </document>
