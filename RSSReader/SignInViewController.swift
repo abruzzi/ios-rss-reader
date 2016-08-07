@@ -46,7 +46,6 @@ class SignInViewController: UIViewController {
     
     func signedIn(user: FIRUser?) {
         AppState.sharedInstance.displayName = user?.displayName ?? user?.email
-        AppState.sharedInstance.photoUrl = user?.photoURL
         AppState.sharedInstance.signedIn = true
         
         let defaults = NSUserDefaults.standardUserDefaults()

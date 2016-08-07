@@ -13,7 +13,12 @@ class SignoutTableViewCell: UITableViewCell {
     @IBOutlet weak var signOutButton: UIButton!
     
     @IBAction func signOut(sender: AnyObject) {
-        print("signout...")
+        AppState.sharedInstance.displayName = ""
+        AppState.sharedInstance.signedIn = false
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.removeObjectForKey("currentUid")
+        defaults.removeObjectForKey("currentEmail")
     }
     
     override func awakeFromNib() {
@@ -23,8 +28,6 @@ class SignoutTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

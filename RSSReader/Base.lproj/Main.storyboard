@@ -275,7 +275,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="delegate" destination="1gy-8A-DpF" id="KY5-hA-TaS"/>
+                                    <outlet property="delegate" destination="WoA-mB-HA3" id="bbw-iX-ANy"/>
                                 </connections>
                             </webView>
                         </subviews>

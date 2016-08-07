@@ -20,8 +20,6 @@ import UIColor_Hex_Swift
 class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     var ref: FIRDatabaseReference!
-    
-//    var feeds: [FIRDataSnapshot]! = []
     var recommendations: [FIRDataSnapshot]! = []
     
     private var _refHandle: FIRDatabaseHandle!
@@ -29,7 +27,6 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 40, height: 40), type: .Orbit, color: UIColor.orangeColor())
     
     deinit {
-//        self.ref.child("feeds").removeObserverWithHandle(_refHandle)
         self.ref.child("recommendations").removeObserverWithHandle(_refHandle)
     }
     

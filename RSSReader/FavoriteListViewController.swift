@@ -19,7 +19,7 @@ class FavoriteListViewController: UIViewController, UITableViewDelegate, UITable
     var feeds: [FIRDataSnapshot]! = []
     private var _refHandle: FIRDatabaseHandle!
     
-    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .BallTrianglePath, color: UIColor.orangeColor())
+    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .Orbit, color: UIColor.orangeColor())
     
     deinit {
         self.ref.child("favorites").removeObserverWithHandle(_refHandle)
