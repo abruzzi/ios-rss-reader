@@ -146,32 +146,34 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
             return ()
         });
     }
-    
-    func snoozeCurrent(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
-        tableView.beginUpdates()
+
+    private func snooze(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
         let feedSnapshot: FIRDataSnapshot! = self.recommendations[indexPath.row]
         let value = feedSnapshot.value as! Dictionary<String, String>
         
         self.ref.child("snoozed/\(uid!)/\(cell.feedId!)").setValue(value)
-        self.ref.child("recommendations/\(uid!)/\(cell.feedId!)").removeValue()
+    }
+    
+    private func delete(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
+        let feedSnapshot: FIRDataSnapshot! = self.recommendations[indexPath.row]
         
+        self.ref.child("recommendations/\(uid!)/\(cell.feedId!)").removeValue()
         self.recommendations.removeAtIndex(recommendations.indexOf(feedSnapshot)!)
+        
         tableView.indexPathForCell(cell)
         tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Left)
-        
+    }
+    
+    func snoozeCurrent(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
+        tableView.beginUpdates()
+        snooze(cell: cell, indexPath: indexPath)
+        delete(cell: cell, indexPath: indexPath)
         tableView.endUpdates()
     }
     
     func deleteCell(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
         tableView.beginUpdates()
-        let feedSnapshot: FIRDataSnapshot! = self.recommendations[indexPath.row]
-        
-        self.ref.child("recommendations/\(uid!)/\(cell.feedId!)").removeValue()
-        
-        self.recommendations.removeAtIndex(recommendations.indexOf(feedSnapshot)!)
-        tableView.indexPathForCell(cell)
-        tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Left)
-        
+        delete(cell: cell, indexPath: indexPath)
         tableView.endUpdates()
     }
 }
