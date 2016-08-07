@@ -110,7 +110,7 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     }
 
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "earth")
+        return UIImage(named: "note")
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
