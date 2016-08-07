@@ -20,13 +20,17 @@ import UIColor_Hex_Swift
 class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     var ref: FIRDatabaseReference!
-    var feeds: [FIRDataSnapshot]! = []
+    
+//    var feeds: [FIRDataSnapshot]! = []
+    var recommendations: [FIRDataSnapshot]! = []
+    
     private var _refHandle: FIRDatabaseHandle!
     
     var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 40, height: 40), type: .Orbit, color: UIColor.orangeColor())
     
     deinit {
-        self.ref.child("feeds").removeObserverWithHandle(_refHandle)
+//        self.ref.child("feeds").removeObserverWithHandle(_refHandle)
+        self.ref.child("recommendations").removeObserverWithHandle(_refHandle)
     }
     
     override func viewDidLoad() {
@@ -37,17 +41,22 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         self.tableView.tableFooterView = UIView()
         
         self.view.addSubview(activityIndicator)
-        configureDatabase()
+        loadRecommendations()
     }
-    
-    func configureDatabase() {
+
+    func loadRecommendations() {
         ref = FIRDatabase.database().reference()
         
         activityIndicator.frame = CGRect(x: (view.frame.width-40)/2, y: (view.frame.height-40)/2, width: 40, height: 40)
         activityIndicator.startAnimation()
-        _refHandle = self.ref.child("feeds").queryLimitedToFirst(12).observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            self.feeds.append(snapshot)
-            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.feeds.count-1, inSection: 0)], withRowAnimation: .Automatic)
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let uid = defaults.stringForKey("currentUid")
+        print(uid)
+        
+        _refHandle = self.ref.child("recommendations/\(uid!)").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+            self.recommendations.append(snapshot)
+            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.recommendations.count-1, inSection: 0)], withRowAnimation: .Automatic)
             self.activityIndicator.stopAnimation()
         })
     }
@@ -55,21 +64,19 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        print(view.frame.height)
-    }
 
     @IBOutlet weak var tableView: UITableView!
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return feeds.count
+        return self.recommendations.count
     }
  
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RSSFeedTableViewCell", forIndexPath: indexPath) as! RSSFeedTableViewCell
         
-        let feedSnapshot: FIRDataSnapshot! = self.feeds[indexPath.row]
+        print(self.recommendations.count)
+        
+        let feedSnapshot: FIRDataSnapshot! = self.recommendations[indexPath.row]
         let feed = feedSnapshot.value as! Dictionary<String, String>
         
         cell.titleLabel.text = feed[Constants.MessageFields.title] as String!
@@ -78,7 +85,7 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         cell.feedId = feedSnapshot.key as String!
         
         let imageUrl = feed[Constants.MessageFields.heroImage] as String!
-
+        
         cell.heroImageView.sd_setImageWithURL(NSURL(string: imageUrl), placeholderImage: UIImage(named: "icepeak-placeholder"))
         
         self.configureCell(cell, indexPath: indexPath)
@@ -95,7 +102,7 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         if segue.identifier == "loadFeed", let destination = segue.destinationViewController as?
             RSSFeedDetailViewController {
             if let indexPath = sender as? NSIndexPath {
-                destination.feedSnapshot = self.feeds[indexPath.row]
+                destination.feedSnapshot = self.recommendations[indexPath.row]
             }
         }
     }
@@ -105,7 +112,7 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "You have no items"
+        let text = "No recommendations for you now"
         let attribs = [
             NSFontAttributeName: UIFont.boldSystemFontOfSize(18),
             NSForegroundColorAttributeName: UIColor.lightGrayColor()
@@ -113,22 +120,6 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         
         return NSAttributedString(string: text, attributes: attribs)
     }
-//
-//    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-//        let text = "Add items to track the things that are important to you. Add your first item by tapping the + button."
-//        
-//        let para = NSMutableParagraphStyle()
-//        para.lineBreakMode = NSLineBreakMode.ByWordWrapping
-//        para.alignment = NSTextAlignment.Center
-//        
-//        let attribs = [
-//            NSFontAttributeName: UIFont.systemFontOfSize(14),
-//            NSForegroundColorAttributeName: UIColor.lightGrayColor(),
-//            NSParagraphStyleAttributeName: para
-//        ]
-//        
-//        return NSAttributedString(string: text, attributes: attribs)
-//    }
     
     func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
         return true
@@ -138,20 +129,33 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         let clockViewImage =  UIImage(named: "alarm-clock")
         let clockView = UIImageView(image: clockViewImage)
         
-        cell.setSwipeGestureWithView(clockView, color: UIColor(rgba: "#5CB52A"), mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
+        cell.setSwipeGestureWithView(clockView, color: UIColor(rgba: "#5CB52A"), mode: MCSwipeTableViewCellMode.Exit, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
             NSLog("Did swipe \"Clock View\" cell");
+            self.deleteCell(cell: cell as! RSSFeedTableViewCell, indexPath: indexPath)
             return ()
         });
         
         
-        let listViewImage =  UIImage(named: "checkmark")
+        let listViewImage = UIImage(named: "checkmark")
         let listView = UIImageView(image: listViewImage)
         
-        cell.setSwipeGestureWithView(listView, color: UIColor(rgba: "#F48D3B"), mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
+        cell.setSwipeGestureWithView(listView, color: UIColor(rgba: "#F48D3B"), mode: MCSwipeTableViewCellMode.Exit, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
             NSLog("Did swipe \"list View\" cell");
+            self.deleteCell(cell: cell as! RSSFeedTableViewCell, indexPath: indexPath)
             return ()
         });
         
+    }
+    
+    func deleteCell(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
+        tableView.beginUpdates()
+        
+        let feedSnapshot: FIRDataSnapshot! = self.recommendations[indexPath.row]
+        self.recommendations.removeAtIndex(recommendations.indexOf(feedSnapshot)!)
+        
+        tableView.indexPathForCell(cell)
+        tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Left)
+        tableView.endUpdates()
     }
 }
 

@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Favorite List View Controller-->
+        <!--Snoozed-->
         <scene sceneID="bHM-v2-vCx">
             <objects>
                 <viewController id="ODf-cn-N4H" customClass="FavoriteListViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,7 +55,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="Upk-Km-0SZ"/>
+                    <tabBarItem key="tabBarItem" title="Snoozed" image="snooze" id="Upk-Km-0SZ"/>
                     <connections>
                         <outlet property="tableView" destination="Llj-Wh-oza" id="Veb-J0-FaM"/>
                     </connections>
@@ -172,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="2027" y="-289"/>
         </scene>
-        <!--View Controller-->
+        <!--User Profile Table View Controller-->
         <scene sceneID="aEB-Ye-BlM">
             <objects>
-                <viewController id="nMu-96-sYn" sceneMemberID="viewController">
+                <viewController id="nMu-96-sYn" customClass="UserProfileTableViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jTf-Xg-hi8"/>
                         <viewControllerLayoutGuide type="bottom" id="465-pI-5Nw"/>
@@ -188,7 +188,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="IKS-VE-RGt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SignoutTableViewCell" id="IKS-VE-RGt" customClass="SignoutTableViewCell" customModule="RSSReader" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IKS-VE-RGt" id="XfI-7r-UDG">
@@ -200,6 +200,9 @@
                                                     <state key="normal" title="Sign Out">
                                                         <color key="titleColor" red="1" green="0.59027504920959473" blue="0.11467901617288589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="signOut:" destination="IKS-VE-RGt" eventType="touchUpInside" id="jgI-Uw-lke"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -209,8 +212,15 @@
                                                 <constraint firstItem="uiW-8p-5Ob" firstAttribute="height" secondItem="XfI-7r-UDG" secondAttribute="height" id="wGU-lJ-Lkz"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="signOutButton" destination="uiW-8p-5Ob" id="U4s-e5-VFy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nMu-96-sYn" id="BAD-nc-6SD"/>
+                                    <outlet property="delegate" destination="nMu-96-sYn" id="DMH-Zt-FaU"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -222,16 +232,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OXm-00-oiP"/>
+                    <connections>
+                        <outlet property="tableView" destination="1K3-Av-MDl" id="MQp-X3-z6W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lb4-eo-tzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2056" y="1007"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Recommendations-->
         <scene sceneID="Dem-PV-KTl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2yW-Hf-RJJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="Z1W-25-DdP"/>
+                    <tabBarItem key="tabBarItem" title="Recommendations" image="feed" id="Z1W-25-DdP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sIJ-ll-EHr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -372,19 +385,19 @@
                     </tabBar>
                     <connections>
                         <segue destination="2yW-Hf-RJJ" kind="relationship" relationship="viewControllers" id="f8n-5c-tnE"/>
-                        <segue destination="DHL-8x-IVX" kind="relationship" relationship="viewControllers" id="J3q-bm-Kfg"/>
                         <segue destination="ODf-cn-N4H" kind="relationship" relationship="viewControllers" id="Fwn-uv-dlt"/>
+                        <segue destination="DHL-8x-IVX" kind="relationship" relationship="viewControllers" id="J3q-bm-Kfg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4W4-lW-x8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="104" y="-319"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Settings-->
         <scene sceneID="6FU-TB-dhk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DHL-8x-IVX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="kfZ-lw-uiv"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="kfZ-lw-uiv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="D4w-sj-VUP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -400,4 +413,9 @@
             <point key="canvasLocation" x="1080" y="983"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="feed" width="30" height="30"/>
+        <image name="settings" width="30" height="30"/>
+        <image name="snooze" width="30" height="30"/>
+    </resources>
 </document>
