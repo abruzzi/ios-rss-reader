@@ -24,7 +24,16 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     
     private var _refHandle: FIRDatabaseHandle!
     
-    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 40, height: 40), type: .Orbit, color: UIColor.orangeColor())
+    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 40, height: 40), type: .BallRotate, color: UIColor.orangeColor())
+    
+    private var uid: String?
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        uid = defaults.stringForKey("currentUid")
+    }
     
     deinit {
         self.ref.child("recommendations").removeObserverWithHandle(_refHandle)
@@ -46,10 +55,6 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         
         activityIndicator.frame = CGRect(x: (view.frame.width-40)/2, y: (view.frame.height-40)/2, width: 40, height: 40)
         activityIndicator.startAnimation()
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let uid = defaults.stringForKey("currentUid")
-        print(uid)
         
         _refHandle = self.ref.child("recommendations/\(uid!)").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
             self.recommendations.append(snapshot)
@@ -128,7 +133,10 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         
         cell.setSwipeGestureWithView(clockView, color: UIColor(rgba: "#5CB52A"), mode: MCSwipeTableViewCellMode.Exit, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
             NSLog("Did swipe \"Clock View\" cell");
-            self.deleteCell(cell: cell as! RSSFeedTableViewCell, indexPath: indexPath)
+            let current = cell as! RSSFeedTableViewCell
+            print(current.feedId)
+//            self.deleteCell(cell: current, indexPath: indexPath)
+            self.snoozeCurrent(cell: current, indexPath: indexPath)
             return ()
         });
         
@@ -138,21 +146,36 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         
         cell.setSwipeGestureWithView(listView, color: UIColor(rgba: "#F48D3B"), mode: MCSwipeTableViewCellMode.Exit, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
             NSLog("Did swipe \"list View\" cell");
-            self.deleteCell(cell: cell as! RSSFeedTableViewCell, indexPath: indexPath)
+            self.snoozeCurrent(cell: cell as! RSSFeedTableViewCell, indexPath: indexPath)
             return ()
         });
         
     }
     
-    func deleteCell(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
+    func snoozeCurrent(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
         tableView.beginUpdates()
-        
         let feedSnapshot: FIRDataSnapshot! = self.recommendations[indexPath.row]
-        self.recommendations.removeAtIndex(recommendations.indexOf(feedSnapshot)!)
+        let value = feedSnapshot.value as! Dictionary<String, String>
         
+        self.ref.child("snoozed/\(uid!)/\(cell.feedId!)").setValue(value)
+        self.ref.child("recommendations/\(uid!)/\(cell.feedId!)").removeValue()
+        
+        self.recommendations.removeAtIndex(recommendations.indexOf(feedSnapshot)!)
         tableView.indexPathForCell(cell)
         tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Left)
+        
         tableView.endUpdates()
     }
+    
+//    func deleteCell(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
+//        tableView.beginUpdates()
+//        
+//        let feedSnapshot: FIRDataSnapshot! = self.recommendations[indexPath.row]
+//        self.recommendations.removeAtIndex(recommendations.indexOf(feedSnapshot)!)
+//        
+//        tableView.indexPathForCell(cell)
+//        tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Left)
+//        tableView.endUpdates()
+//    }
 }
 

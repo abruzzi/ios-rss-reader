@@ -15,7 +15,7 @@ class RSSFeedDetailViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     
-    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .Orbit, color: UIColor.orangeColor())
+    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .LineScale, color: UIColor.orangeColor())
     
     var feedSnapshot: FIRDataSnapshot!
     
