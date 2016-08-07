@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Favorite List View Controller-->
+        <!--Snoozed-->
         <scene sceneID="bHM-v2-vCx">
             <objects>
                 <viewController id="ODf-cn-N4H" customClass="FavoriteListViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,7 +99,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Llj-Wh-oza" secondAttribute="trailing" constant="-20" id="gZV-Ib-2Kx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TWW-Fw-nmt"/>
+                    <navigationItem key="navigationItem" title="Snoozed" id="TWW-Fw-nmt"/>
                     <connections>
                         <outlet property="tableView" destination="Llj-Wh-oza" id="Veb-J0-FaM"/>
                     </connections>
@@ -108,7 +108,7 @@
             </objects>
             <point key="canvasLocation" x="1950" y="-1415"/>
         </scene>
-        <!--RSS Reader-->
+        <!--Recommendations-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="FeedListViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -205,7 +205,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="RSS Reader" id="7IT-sm-2uY"/>
+                    <navigationItem key="navigationItem" title="Recommendations" id="7IT-sm-2uY"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="gTK-gF-aJs" id="10D-Xh-h4h"/>
@@ -216,7 +216,7 @@
             </objects>
             <point key="canvasLocation" x="2027" y="-289"/>
         </scene>
-        <!--User Profile Table View Controller-->
+        <!--Profile-->
         <scene sceneID="aEB-Ye-BlM">
             <objects>
                 <viewController id="nMu-96-sYn" customClass="UserProfileTableViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -232,15 +232,46 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SignoutTableViewCell" id="IKS-VE-RGt" customClass="SignoutTableViewCell" customModule="RSSReader" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserInfoTableViewCell" id="npb-6A-qrl" customClass="UserInfoTableViewCell" customModule="RSSReader" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="npb-6A-qrl" id="r59-jF-WKt">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRP-x7-35c">
+                                                    <rect key="frame" x="8" y="-8" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="6u0-Rf-4pw"/>
+                                                        <constraint firstAttribute="width" constant="60" id="yNS-IB-YDL"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpt-wg-p2f">
+                                                    <rect key="frame" x="76" y="8" width="96" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kRP-x7-35c" firstAttribute="centerY" secondItem="r59-jF-WKt" secondAttribute="centerY" id="eMc-dE-rrG"/>
+                                                <constraint firstItem="kRP-x7-35c" firstAttribute="leading" secondItem="r59-jF-WKt" secondAttribute="leadingMargin" id="h8a-RJ-KB8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarImage" destination="kRP-x7-35c" id="egh-0G-pya"/>
+                                            <outlet property="userNameLabel" destination="cpt-wg-p2f" id="vdL-R8-ajy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SignoutTableViewCell" id="IKS-VE-RGt" customClass="SignoutTableViewCell" customModule="RSSReader" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="157.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IKS-VE-RGt" id="XfI-7r-UDG">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiW-8p-5Ob">
-                                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiW-8p-5Ob">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                                     <state key="normal" title="Sign Out">
                                                         <color key="titleColor" red="1" green="0.59027504920959473" blue="0.11467901617288589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -261,6 +292,7 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="nMu-96-sYn" id="BAD-nc-6SD"/>
                                     <outlet property="delegate" destination="nMu-96-sYn" id="DMH-Zt-FaU"/>
@@ -275,7 +307,7 @@
                             <constraint firstItem="1K3-Av-MDl" firstAttribute="centerX" secondItem="9v4-Tt-ohg" secondAttribute="centerX" id="slB-IS-68y"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="OXm-00-oiP"/>
+                    <navigationItem key="navigationItem" title="Profile" id="OXm-00-oiP"/>
                     <connections>
                         <outlet property="tableView" destination="1K3-Av-MDl" id="MQp-X3-z6W"/>
                     </connections>
