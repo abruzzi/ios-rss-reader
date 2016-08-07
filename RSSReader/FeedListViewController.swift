@@ -132,24 +132,19 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         let clockView = UIImageView(image: clockViewImage)
         
         cell.setSwipeGestureWithView(clockView, color: UIColor(rgba: "#5CB52A"), mode: MCSwipeTableViewCellMode.Exit, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
-            NSLog("Did swipe \"Clock View\" cell");
             let current = cell as! RSSFeedTableViewCell
-            print(current.feedId)
-//            self.deleteCell(cell: current, indexPath: indexPath)
             self.snoozeCurrent(cell: current, indexPath: indexPath)
             return ()
         });
-        
         
         let listViewImage = UIImage(named: "checkmark")
         let listView = UIImageView(image: listViewImage)
         
         cell.setSwipeGestureWithView(listView, color: UIColor(rgba: "#F48D3B"), mode: MCSwipeTableViewCellMode.Exit, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
-            NSLog("Did swipe \"list View\" cell");
-            self.snoozeCurrent(cell: cell as! RSSFeedTableViewCell, indexPath: indexPath)
+            let current = cell as! RSSFeedTableViewCell
+            self.deleteCell(cell: current, indexPath: indexPath)
             return ()
         });
-        
     }
     
     func snoozeCurrent(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
@@ -167,15 +162,17 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         tableView.endUpdates()
     }
     
-//    func deleteCell(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
-//        tableView.beginUpdates()
-//        
-//        let feedSnapshot: FIRDataSnapshot! = self.recommendations[indexPath.row]
-//        self.recommendations.removeAtIndex(recommendations.indexOf(feedSnapshot)!)
-//        
-//        tableView.indexPathForCell(cell)
-//        tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Left)
-//        tableView.endUpdates()
-//    }
+    func deleteCell(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
+        tableView.beginUpdates()
+        let feedSnapshot: FIRDataSnapshot! = self.recommendations[indexPath.row]
+        
+        self.ref.child("recommendations/\(uid!)/\(cell.feedId!)").removeValue()
+        
+        self.recommendations.removeAtIndex(recommendations.indexOf(feedSnapshot)!)
+        tableView.indexPathForCell(cell)
+        tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Left)
+        
+        tableView.endUpdates()
+    }
 }
 

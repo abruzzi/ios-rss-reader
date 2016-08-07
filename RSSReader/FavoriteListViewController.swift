@@ -22,7 +22,7 @@ class FavoriteListViewController: UIViewController, UITableViewDelegate, UITable
     var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 20, y: 20, width: 32, height: 32), type: .Orbit, color: UIColor.orangeColor())
     
     deinit {
-        self.ref.child("favorites").removeObserverWithHandle(_refHandle)
+        self.ref.child("snoozed").removeObserverWithHandle(_refHandle)
     }
     
     override func viewDidLoad() {
@@ -39,12 +39,9 @@ class FavoriteListViewController: UIViewController, UITableViewDelegate, UITable
         
         let defaults = NSUserDefaults.standardUserDefaults()
         let uid = defaults.stringForKey("currentUid")
-        print(uid)
         
-        _refHandle = self.ref.child("favorites/\(uid!)").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+        _refHandle = self.ref.child("snoozed/\(uid!)").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
             self.feeds.append(snapshot)
-            print(snapshot)
-            print(self.feeds.count)
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.feeds.count-1, inSection: 0)], withRowAnimation: .Automatic)
             self.activityIndicator.stopAnimation()
         })
@@ -65,9 +62,9 @@ class FavoriteListViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("FavoriteFeedTableViewCell", forIndexPath: indexPath) as! FavoriteFeedCellTableViewCell
         
         let feedSnapshot: FIRDataSnapshot! = self.feeds[indexPath.row]
-        let feedId = feedSnapshot.value as! String
-//        cell.feedInfo.text = feed[Constants.MessageFields.title] as String!
-        cell.feedInfo.text = feedId
+        let feed = feedSnapshot.value as! Dictionary<String, String>
+
+        cell.feedInfo.text = feed[Constants.MessageFields.title] as String!
         
         return cell
     }
