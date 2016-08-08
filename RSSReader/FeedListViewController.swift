@@ -162,8 +162,8 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         self.ref.child("recommendations/\(uid!)/\(cell.feedId!)").removeValue()
         self.recommendations.removeAtIndex(recommendations.indexOf(feedSnapshot)!)
         
-        tableView.indexPathForCell(cell)
-        tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Left)
+//        tableView.indexPathForCell(cell)
+//        tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Left)
     }
     
     func snoozeCurrent(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {

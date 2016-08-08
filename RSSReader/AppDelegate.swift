@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController = storyboard.instantiateViewControllerWithIdentifier("mainStoryboard")
         }
         
-        initialViewController.tabBarController?.tabBar.barTintColor = UIColor.orangeColor()
+//        initialViewController.tabBarController?.tabBar.barTintColor = UIColor.orangeColor()
         
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()

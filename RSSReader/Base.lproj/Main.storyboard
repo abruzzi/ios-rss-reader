@@ -233,29 +233,34 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserInfoTableViewCell" id="npb-6A-qrl" customClass="UserInfoTableViewCell" customModule="RSSReader" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="npb-6A-qrl" id="r59-jF-WKt">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRP-x7-35c">
-                                                    <rect key="frame" x="8" y="-8" width="60" height="60"/>
+                                                    <rect key="frame" x="8" y="24" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="6u0-Rf-4pw"/>
                                                         <constraint firstAttribute="width" constant="60" id="yNS-IB-YDL"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpt-wg-p2f">
-                                                    <rect key="frame" x="76" y="8" width="96" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpt-wg-p2f">
+                                                    <rect key="frame" x="76" y="24" width="96" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="96" id="B2Z-Zw-QLk"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kRP-x7-35c" firstAttribute="centerY" secondItem="r59-jF-WKt" secondAttribute="centerY" id="eMc-dE-rrG"/>
+                                                <constraint firstItem="cpt-wg-p2f" firstAttribute="leading" secondItem="r59-jF-WKt" secondAttribute="leadingMargin" constant="68" id="I0I-S3-A74"/>
                                                 <constraint firstItem="kRP-x7-35c" firstAttribute="leading" secondItem="r59-jF-WKt" secondAttribute="leadingMargin" id="h8a-RJ-KB8"/>
+                                                <constraint firstItem="kRP-x7-35c" firstAttribute="top" secondItem="r59-jF-WKt" secondAttribute="topMargin" constant="16" id="ilo-Oi-P4v"/>
+                                                <constraint firstItem="cpt-wg-p2f" firstAttribute="top" secondItem="kRP-x7-35c" secondAttribute="top" id="ktr-Wy-6aZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
