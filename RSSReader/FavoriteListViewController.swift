@@ -37,6 +37,8 @@ class FavoriteListViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         self.view.addSubview(activityIndicator)
         configureDatabase()
+        tableView.tableFooterView = UIView()
+        self.tabBarController?.tabBar.tintColor = UIColor.redColor()
     }
     
     func configureDatabase() {

@@ -31,16 +31,33 @@ class UserProfileTableViewController: UIViewController, UITableViewDelegate, UIT
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        
+        if(section == 0) {
+            return 1
+        } else if(section == 1){
+            return 1
+        }
+        
+        return 0
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SignoutTableViewCell", forIndexPath: indexPath)
+        var cell: UITableViewCell
+        
+        if(indexPath.section == 0 && indexPath.row == 0) {
+            cell = tableView.dequeueReusableCellWithIdentifier("UserInfoTableViewCell", forIndexPath: indexPath) as!
+            UserInfoTableViewCell
+            cell.textLabel?.text = "Juntao"
+            cell.imageView?.sd_setImageWithURL(NSURL(string: ""), placeholderImage: UIImage(named: "icepeak-placeholder"))
+        } else {
+            cell = tableView.dequeueReusableCellWithIdentifier("SignoutTableViewCell", forIndexPath: indexPath) as! SignoutTableViewCell
+        }
+        
         return cell
     }
 

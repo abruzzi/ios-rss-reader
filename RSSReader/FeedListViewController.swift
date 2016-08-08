@@ -61,6 +61,8 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.recommendations.count-1, inSection: 0)], withRowAnimation: .Automatic)
             self.activityIndicator.stopAnimation()
         })
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
