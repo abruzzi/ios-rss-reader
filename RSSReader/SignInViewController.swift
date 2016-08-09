@@ -67,7 +67,9 @@ class SignInViewController: UIViewController {
         let y = signInButton.frame.maxY+signInButton.frame.height+20
         
         activityIndicator.frame = CGRect(x: x, y: y, width: 40, height: 40)
+        signInButton.layer.cornerRadius = 5
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.errorMessage.text = ""

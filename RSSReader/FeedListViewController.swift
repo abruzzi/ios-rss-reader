@@ -49,6 +49,8 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
         self.view.addSubview(activityIndicator)
         loadRecommendations()
     }
+    
+    
 
     func loadRecommendations() {
         ref = FIRDatabase.database().reference()
@@ -62,7 +64,19 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
             self.activityIndicator.stopAnimation()
         })
         
-        
+        self.ref.child("recommendations/\(uid!)").observeEventType(.ChildRemoved, withBlock: { (snapshot) in
+            let key = snapshot.key as String!
+            let x = self.recommendations.filter({(snapshot) -> Bool in
+                snapshot.key == key
+            }).first
+            
+            print(x)
+            
+            let index = self.recommendations.indexOf(x!)!
+            self.recommendations.removeAtIndex(index)
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -157,13 +171,7 @@ class FeedListViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyD
     }
     
     private func delete(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
-        let feedSnapshot: FIRDataSnapshot! = self.recommendations[indexPath.row]
-        
         self.ref.child("recommendations/\(uid!)/\(cell.feedId!)").removeValue()
-        self.recommendations.removeAtIndex(recommendations.indexOf(feedSnapshot)!)
-        
-//        tableView.indexPathForCell(cell)
-//        tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Left)
     }
     
     func snoozeCurrent(cell cell: RSSFeedTableViewCell, indexPath: NSIndexPath) {
